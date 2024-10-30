@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\leaod\Desktop\websig\CV\CSS\style.css">
+    <title>Formação Académica - José Gonçalves</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map-estudo {
+            height: 400px;
+            width: 50%; /* Largura total do contêiner */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Currículo Vitae de José Gonçalves</h1>
+        <button class="menu-toggle" aria-label="Abrir Menu">
+            &#9776; <!-- Ícone do menu hamburguer -->
+        </button>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Apresentação</a></li>
+                <li><a href="formacao.html">Formação Académica</a></li>
+                <li><a href="experiencia.html">Experiência Profissional</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Formação Académica</h2>
+            <h3>Mestrado em Sistemas de Informação Geográfica</h3>
+            <p>Universidade do Porto, Porto, Portugal (Setembro 2023 - Atual)</p>
+            <p>Participação no programa de intercâmbio Erasmus no segundo semestre na Universidade de Vest Timișoara (UVT), Timișoara, Roménia (Fevereiro de 2024 – Junho de 2024).</p>
+            <a href="https://sigarra.up.pt/flup/pt/web_page.inicial">Site da FLUP</a>
+            
+            <h3>Licenciatura em Engenharia Florestal</h3>
+            <p>Universidade de Trás-os-Montes e Alto Douro, Vila Real, Portugal (Setembro 2019 - Setembro 2022)</p>
+            <p>Projeto de Licenciatura: Variação do comportamento do fogo no Pinhal Bravo Nacional.</p>
+            <ul>
+                <li>Inventário das florestas para uso múltiplo</li>
+                <li>Biodiversidade e conservação de espaços verdes e vida selvagem</li>
+                <li>Gestão sustentável dos recursos florestais</li>
+                <li>Ordenamento e planeamento florestal</li>
+                <li>Produção de material lenhoso e transformação tecnológica</li>
+                <li>Fixação de carbono e alterações climáticas</li>
+                <li>Gestão dos recursos hídricos</li>
+                <li>Monitorização dos ecossistemas aquáticos</li>
+            </ul>
+            <a href="https://www.utad.pt/">Site da UTAD</a>
+        </section>
+        
+        <section>
+            <h2>Onde Estudei</h2>
+            <div id="map-estudo"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 José Gonçalves</p>
+    </footer>
+
+    <script>
+        // Mapa de Estudo
+        var mapEstudo = L.map('map-estudo').setView([41.15, -8.61], 6); // Centraliza em Porto
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(mapEstudo);
+
+        // Marcadores de Estudo
+        var markersEstudo = [
+            L.marker([41.15, -8.61]).bindPopup('Universidade do Porto'), // Porto, Portugal
+            L.marker([41.30, -7.74]).bindPopup('Universidade de Trás-os-Montes e Alto Douro'), // Vila Real, Portugal
+            L.marker([45.75, 21.23]).bindPopup('Universidade de Vest Timișoara') // Timișoara, Roménia
+        ];
+
+        markersEstudo.forEach(marker => marker.addTo(mapEstudo));
+
+        // Ajusta o zoom para mostrar todos os marcadores
+        var groupEstudo = L.featureGroup(markersEstudo).addTo(mapEstudo);
+        mapEstudo.fitBounds(groupEstudo.getBounds());
+    </script>
+</body>
+</html>

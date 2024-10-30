@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\leaod\Desktop\websig\CV\CSS\style.css">
+    <title>Experiência Profissional - José Gonçalves</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map-trabalho {
+            height: 400px;
+            width: 50%; /* Largura total do contêiner */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Currículo Vitae de José Gonçalves</h1>
+        <button class="menu-toggle" aria-label="Abrir Menu">
+            &#9776; <!-- Ícone do menu hamburguer -->
+        </button>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Apresentação</a></li>
+                <li><a href="formacao.html">Formação Académica</a></li>
+                <li><a href="experiencia.html">Experiência Profissional</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Experiência Profissional</h2>
+            <h3>Supervisor de Operações Florestais</h3>
+            <p>ECOREDE - Engenharia e Serviços, S.A., Maia, Portugal (Fevereiro 2023 - Janeiro 2024)</p>
+            <p>- Supervisão de trabalhos florestais em todo o país em Portugal</p>
+            <p>- Trabalho de gabinete</p>
+            <a href="https://www.ecorede.pt/">Site da ecorede</a>
+        
+            <h3>Operador Aprendiz</h3>
+            <p>IBER KING Restauração, Vila Real, Portugal (Março 2022 - Maio 2022)</p>
+            <p>Apoio às tarefas da confeção e limpeza do local.</p>
+        
+            <h3>Assistente de Cozinha num Talho/Charcutaria</h3>
+            <p>RYCKEBOER/STIJN, Westende, Bélgica (Julho 2024 - Setembro 2024)</p>
+            <p>Apoio geral na cozinha, ajudando em todas as tarefas conforme necessário.</p>
+        
+            <h3>Voluntariado Jovem para a Natureza e Floresta</h3>
+            <p>Valongo (Julho 2018 - Setembro 2018)</p>
+            <p>Desenvolvi tarefas de vigilância nas Serras de Valongo para a prevenção de incêndios rurais/florestais.</p>
+        </section>
+        
+        <section>
+            <h2>Onde Trabalhei</h2>
+            <div id="map-trabalho"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 José Gonçalves</p>
+    </footer>
+
+    <script>
+        // Mapa de Trabalho
+        var mapTrabalho = L.map('map-trabalho').setView([39.5, -8.0], 6); // Centraliza em Portugal
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(mapTrabalho);
+
+        // Marcadores de Trabalho
+        var markersTrabalho = [
+            L.marker([41.18, -8.62]).bindPopup('ECOREDE - Supervisor de Operações Florestais'), // Maia, Portugal
+            L.marker([41.13, -7.74]).bindPopup('IBER KING - Operador Aprendiz'), // Vila Real, Portugal
+            L.marker([51.30, 3.06]).bindPopup('RYCKEBOER - Assistente de Cozinha'), // Westende, Bélgica
+            L.marker([41.25, -8.46]).bindPopup('Voluntariado Jovem para a Natureza e Floresta - Valongo') // Valongo, Portugal
+        ];
+
+        markersTrabalho.forEach(marker => marker.addTo(mapTrabalho));
+
+        // Ajusta o zoom para mostrar todos os marcadores
+        var groupTrabalho = L.featureGroup(markersTrabalho).addTo(mapTrabalho);
+        mapTrabalho.fitBounds(groupTrabalho.getBounds());
+    </script>
+</body>
+</html>

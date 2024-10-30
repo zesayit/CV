@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\leaod\Desktop\websig\CV\CSS\style.css">
+    <title>Currículo Vitae - José Gonçalves</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map-porto {
+            height: 400px;
+            width: 50%; /* Largura total do contêiner */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Currículo Vitae de José Gonçalves</h1>
+        <button class="menu-toggle" aria-label="Abrir Menu">
+            &#9776; <!-- Ícone do menu hamburguer -->
+        </button>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Apresentação</a></li>
+                <li><a href="formacao.html">Formação Académica</a></li>
+                <li><a href="experiencia.html">Experiência Profissional</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Apresentação</h2>
+            <div class="apresentacao-container">
+                <img src="perfil.jpg" alt="José Gonçalves" style="width: 150px; height: auto;">
+                <p>Sou licenciado em Engenharia Florestal e atualmente estou a tirar um mestrado em Sistemas de Informação Geográfica (SIG). No âmbito do meu mestrado, participei no programa de intercâmbio Erasmus na Universidade de Vest Timișoara (UVT), em Timișoara, Roménia, onde desenvolvi competências interculturais e linguísticas, e colaborei em projetos académicos com estudantes de diferentes nacionalidades. Tenho a ambição de conhecer novas pessoas e de viver um estilo de vida diversificado. Sempre fui desportista e gosto de estar em boa forma física. O bem-estar psicológico é também um fator essencial para mim.</p>
+            </div>
+            <h3>Experiência no Rugby</h3>
+            <p>Joguei rugby no Centro Desportivo Universitário do Porto (CDUP) desde os meus 6 anos até aos 19 anos. Esta experiência desenvolveu em mim um forte espírito de equipa e uma facilidade em trabalhar em grupo sempre que necessário. Além disso, a exigência requerida pelo clube onde joguei ajudou-me a tornar-me uma pessoa mais comprometida e disciplinada na vida. Após esse período, joguei rugby pela Universidade durante os três anos da minha licenciatura, dos 19 aos 21 anos. Com 22 anos, joguei no Algarve pelo Rugby Clube de Loulé (RCL), continuando a reforçar minhas habilidades de trabalho em equipa e o meu compromisso com o desempenho de alto nível. Neste momento jogo no CDUP na minha cidade natal.</p>
+        </section>
+        
+        <section>
+            <h2>Onde Nasci</h2>
+            <div id="map-porto"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 José Gonçalves</p>
+    </footer>
+
+    <script>
+        // Mapa do Porto
+        var mapPorto = L.map('map-porto').setView([41.15, -8.61], 13); // Centraliza em Porto
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(mapPorto);
+
+        // Marcador para o Porto
+        L.marker([41.15, -8.61]).addTo(mapPorto)
+            .bindPopup('Porto - Cidade onde nasci')
+            .openPopup();
+    </script>
+</body>
+</html>
